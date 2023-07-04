@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" style="background-color:#E6E6FA; background-image:url({% static 'images/backpic.jpg' %})" method="post">
+  {% csrf_token %}
+  <input type="text" name="username" placeholder="username"><br>
+  <input type="password" name="password" placeholder="enter your password"><br>
+  <input type="submit">
+
+
+</form>
+   <a href='credentials/account'>
+        <button class="GFG">
+            create account
+        </button>
+    </a>
+
+</body>
+</html>

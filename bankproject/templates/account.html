@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    var subjectObject = {
+
+    "palakkad": ["alathur", "kuzhalmandam", "vadakkencherry"],
+    "ernakulam": ["aluva", "vyttila", "palarivattom", "hycourt"],
+    "kozhikkod": ["ramanattukara", "university"]
+    "trivandrum": ["kadappakkada", "aattingal"]
+    "Trissur": ["kunnamkulam", "chavakkad"]
+
+}
+window.onload = function() {
+  var subjectSel = document.getElementById("District");
+  var topicSel = document.getElementById("branch");
+
+  for (var x in subjectObject) {
+    subjectSel.options[subjectSel.options.length] = new Option(x, x);
+  }
+}
+
+}
+</script>
+
+    <title>Title</title>
+</head>
+<body>
+<h1>REGISTRETION</h1>
+<form action="" style="background-color:#E6E6FA; background-image:url({% static 'images/backpic.jpg' %})" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+     <label for="name">Name:</label><br>
+     <input type="text" name="name" placeholder="enter your name"><br>
+    </div>
+    <div class="form-group">
+
+    <label for="DOB">Date Of Birth:</label><br>
+    <input type="date" name="dob" placeholder="enter your date of birth"><br>
+    </div>
+    <div class="form-group">
+    <label for="Age">Age:</label><br>
+    <input type="number" name="age" placeholder="enter your age"><br>
+    </div>
+     <div class="form-group">
+     <fieldset data-role="controlgroup">
+      <legend>Choose your gender:</legend>
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male" checked>
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female">
+      </fieldset>
+    </div>
+    <div class="form-group">
+    <label for="email">Email:</label><br>
+    <input type="email" name="email" placeholder="enter your email address"><br>
+    </div>
+     <label for="address">Address:</label><br>
+    <input type="text" name="address" placeholder="enter your address"><br>
+    </div>
+    <div class="form-group">
+
+
+    District: <select name="subject" id="subject">
+    <option value="" selected="selected">Select District</option>
+   </select>
+   <br><br>
+   branch: <select name="topic" id="topic">
+    <option value="" selected="selected">Please select Branch</option>
+   </select>
+    </div>
+      <div class="form-group">
+    <label for="type">Choose your account type:</label>
+
+   <select name="account_type" id="type">
+   <option value="savings">saving</option>
+    <option value="current">current</option>
+
+     </select>
+      </div>
+         <div class="form-group">
+     <fieldset data-role="controlgroup">
+      <legend>Choose your meterial:</legend>
+        <label for="credit">creditcard</label>
+        <input type="radio" name="provide" id="credit" value="provide" checked>
+        <label for="debit">debitcard</label>
+        <input type="radio" name="meterial" id="debit" value="meterial">
+      </fieldset>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+    <br>
+    <p>Log-out icon on a button:
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+      </p>
+</form>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+
+</body>
+</html>

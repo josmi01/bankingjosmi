@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      <li class="nav-item">
+
+        <li><a class="nav-link" href="{% url 'bankapp:allBranches' %}">HOME</a></li>
+
+        {% if user.is_authenticated %}
+        <li>hello {{user.username }}</li>
+            <li><a class="nav-link" href="credentials/logout">LOGOUT</a></li>
+          {% else %}
+            <li><a class="nav-link" href="credentials/register">REGISTER</a></li>
+            <li><a  class="nav-link" href=" credentials/login">LOGIN</a></li>
+
+          {% endif %}
+        </li>
+      <li class="nav-item dropdown {% if 'bankapp' in request.path %} active {% endif %}">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Centralbank
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{% url 'bankapp:allBranches' %}">Our branches</a></li>
+             {% for bran in links %}
+          <li> <a class="dropdown-item" href="{{bran.get_url}}">{{bran.name}}</a></li>
+            {% endfor %}
+
+        </ul>
+      </li>
+
+    </ul>
+
+
+   </div>
+  </div>
+</nav>
+
+
+
+
+
+

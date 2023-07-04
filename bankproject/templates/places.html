@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+{{ place.description|truncatewords:155 }}
+
+
+{% endblock %}
+{% block title %}
+  {% if branch %}
+    {{place.name }} -centrebank
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row my_prod_row_class">
+
+    <div class="mx-auto">
+        <p><a href="{% url 'bankapp:Branches' %}">Home</a> | <a href="{{place.branch.get_url}}">{{place.branch}}</a>|{{place.name}}</p>
+    </div>
+<div class="container">
+<br>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div    style="min-width:18rem;">
+            <img class="" src="{{place.image.url}}" alt="{{place.name}}">
+        </div>
+
+    </div>
+
+    <div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div>
+            <h1 class="my_prod_title">{{place.name}}</h1>
+
+            <p class="my_title">places Description</p>
+            <p class="text-justify my_prod_text">{{place.description}}</p>
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+    {% endblock %}
